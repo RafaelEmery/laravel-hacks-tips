@@ -44,4 +44,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'orders'], function () {
 
     Route::post('/create', 'OrderController@store')->name('orders.store');
 
+    Route::get('/export', 'OrderController@export')->name('orders.export');
 });

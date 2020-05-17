@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\OrderRequest;
 use App\Models\Order;
 use App\Repositories\OrderRepository;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -68,7 +69,7 @@ class OrderController extends Controller
 
     public function store(OrderRequest $request) 
     {   
-        $orders = Order::create($request->all());
+        $order = Order::create($request->all());
 
         return redirect(route('orders.index'));
     }
@@ -76,5 +77,13 @@ class OrderController extends Controller
     public function all(OrderRepository $repository)  
     {
         return $repository->listAll();
+    }
+
+    public function export()
+    {
+        $orders = Order::all();
+        $pdf = PDF::loadview('pdf/orders', compact('orders'));
+
+        return $pdf->download('orders_report.pdf');
     }
 }
