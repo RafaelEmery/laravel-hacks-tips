@@ -70,7 +70,7 @@ class OrderController extends Controller
     {   
         $orders = Order::create($request->all());
 
-        dd($orders);
+        return redirect(route('orders.index'));
     }
 
     public function all(OrderRepository $repository)  

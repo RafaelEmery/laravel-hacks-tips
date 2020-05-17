@@ -11,7 +11,9 @@ class OrdersTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   
+        Order::truncate();
+
         factory(Order::class, 20)->create();
     }
 }
