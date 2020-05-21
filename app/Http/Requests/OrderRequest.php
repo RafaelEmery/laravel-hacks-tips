@@ -5,11 +5,11 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OrderRequest extends FormRequest
-{
+{   
     /**
      * Determine if the user is authorized to make this request.
      *
-     * @return bool
+     * @return bool true, em caso de duvidas!
      */
     public function authorize()
     {
@@ -19,7 +19,7 @@ class OrderRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array com os campos e restricoes
      */
     public function rules()
     {
@@ -29,6 +29,13 @@ class OrderRequest extends FormRequest
         ];
     }
 
+    /**
+     * Mensagens:
+     * 
+     * - O metodo messages() ira sobrescrever o da Request "original"
+     * - Para cada validacao/restricao, definimos sua propria mensagem
+     * @return array com as validacoes e mensagens
+     */
     public function messages() 
     {
         return [

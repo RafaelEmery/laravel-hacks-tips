@@ -14,6 +14,13 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
+            /**
+             * Alguns tipos novos:
+             * 
+             * - enum('nome_da_coluna', ['array_de_valores']) que possui possiveis valores
+             * - boolean com o default para definir como sera por padrao
+             */
+            
             $table->id();
             $table->enum('status', ['delivered', 'pending', 'cancel']);
             $table->boolean('paid')->default(false);
