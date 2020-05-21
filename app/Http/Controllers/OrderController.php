@@ -84,6 +84,17 @@ class OrderController extends Controller
         return redirect(route('orders.index'));
     }
 
+    /**
+     * Usando o Repository Pattern:
+     * 
+     * - È útil pois assim adaptamos nosso projeto e nossos Models para o uso de outra ORM - diferente do Eloquent
+     * - Existe um Order_backup.php
+     * - O Order.php usa uma interface e uma trait para usar este Pattern
+     * - Usamos este metodo para listar todos, independente do ORM que esta sendo usado
+     * @param OrderRepository repositorio que definimos para cada Order
+     * @return listAll metodo dinamico da interface OrderRepository e implementado em OrderRepositoryEloquent.php
+     */
+
     public function all(OrderRepository $repository)  
     {
         return $repository->listAll();

@@ -4,6 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+
+/**
+ * - Esta classe é basicamente o "Modal normal" que usamos 
+ * - Feito para ser "uma base" na Repository Pattern
+ * - Todas os métodos, hacks e alterações no Order é feito por aqui
+ */
  
 class Order extends Model
 {   
