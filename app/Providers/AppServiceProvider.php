@@ -10,7 +10,10 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
+     * 
+     * - Usamos para configurar o Repository Pattern 
+     * - Com as duas classes para fazer o Pattern certo
+     * 
      * @return void
      */
     public function register()
