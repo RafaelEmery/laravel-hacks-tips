@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\User;
-use Illuminate\Support\Facades\Mail;
+use App\Jobs\SendCreatedUserEmail;
 
 /**
  * Observers:
@@ -30,16 +30,12 @@ class UserObserver
          * - $user->name += "teste" concatena ao nome do usuario
          */
 
-         /**
-          * - Desta forma, sempre que criarmos um usuario um email sera disparado
-          * - Usamos a Facade de Mail no Laravel para isso, e configuramos o smtp no .env com mailtrap
-          */
+        /**
+         * - Chamando o Job SendCreatedUserEmail
+         * - Este sera um Job na fila do Laravel para enviar um email de usuario criado
+         */
 
-        Mail::send([], [], function($message) {
-            $message->to('rafael.emerycade@gmai.com')
-            ->$subject('Novo usuário cadastrado no sistema!')
-            ->setBody('Um novo usuário foi cadastrado...'); 
-        });
+        SendCreatedUserEmailRoute::dispatch($user);
     }
 
     /**

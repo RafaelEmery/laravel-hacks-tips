@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories\OrderRepository;
 use App\Repositories\OrderRepositoryEloquent;
 use App\Observers\UserObserver;
+use App\User;
 
 class AppServiceProvider extends ServiceProvider
 {
