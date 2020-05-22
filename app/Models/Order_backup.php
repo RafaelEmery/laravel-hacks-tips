@@ -21,12 +21,21 @@ class Order extends Model
     /**
      * Global Scope:
      * 
-     * - Ainda tenho duvidas sobre...
+     * - Permitem criar restrições em todas as chamadas do modelo
+     * - Sobrescrevemos o metodo boot() da classe Model
      */
 
     protected static function boot() 
     {
         parent::boot();
+
+        /**
+         * - Adicionamos uma funcao para adicionar um escopo global
+         * - Passamos um atributo especifico e uma funcao como parametro
+         * - Onde status diferente de 'cancel'
+         * - Logo, o escopo global nao está trazendo os pedidos cancelados
+         * - Se aplica a toda $query para a Order
+         */
 
         static::addGlobalScope('status', function(Builder $builder) {
             $builder->where('status', '<>', 'cancel');
@@ -74,6 +83,15 @@ class Order extends Model
     {
         return $query->where('status', $status);
     }
+
+    /**
+     * Magic Scopes:
+     * 
+     * - Escopos padrao/nativos do Laravel
+     * - Order::latest()->get() para os ultimos registros criados
+     * - Ou Order::InRandomOrder()->get() para ordem aleatoria
+     * - Existem muitos outros, basta pesquisar sobre
+     */
 
     /**
      * Accessors:
