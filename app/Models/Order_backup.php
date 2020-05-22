@@ -72,7 +72,7 @@ class Order extends Model
     }
 
     /**
-     * Local Scope (geral):
+     * Local Scope (geral para o status):
      * 
      * - Esta scope retorna o $status que passamos como parametro
      * - Entao, basicamente conseguimos resumir as outras 3 scopes acime de status em uma

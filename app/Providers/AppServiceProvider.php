@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\OrderRepository;
 use App\Repositories\OrderRepositoryEloquent;
+use App\Observers\UserObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /**
+         * - Usamos o metodo observe para o observer funcionar
+         */
+        User::observe(UserObserver::class);
     }
 }
