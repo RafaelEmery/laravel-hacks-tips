@@ -8,6 +8,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
+use App\User;
 
 /**
  * Filas:
@@ -57,8 +58,8 @@ class SendCreatedUserEmail implements ShouldQueue
           */
 
         Mail::send([], [], function($message) {
-            $message->to('rafael.emerycade@gmai.com')
-            ->$subject('{$this->user->name} foi cadastrado no sistema!')
+            $message->to('rafael.emerycade@gmail.com')
+            ->subject('{$this->user->name} foi cadastrado no sistema!')
             ->setBody('Um novo usuário foi cadastrado...'); 
         });
     }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Observers\UserObserver;
 
 class UsersTableSeeder extends Seeder
 {

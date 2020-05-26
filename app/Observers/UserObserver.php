@@ -35,7 +35,7 @@ class UserObserver
          * - Este sera um Job na fila do Laravel para enviar um email de usuario criado
          */
 
-        SendCreatedUserEmailRoute::dispatch($user);
+        SendCreatedUserEmail::dispatch($user);
     }
 
     /**
